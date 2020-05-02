@@ -8,11 +8,6 @@
           "url": "__GETTING_STARTED__"
         },
         {
-          "name": "Burp History",
-          "type": "url",
-          "url": "http://burp/history"
-        },
-        {
           "name": "Burp CA Certificate",
           "type": "url",
           "url": "http://burp/cert"
