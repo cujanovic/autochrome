@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ruby autochrome.rb -c && ruby autochrome.rb -P
