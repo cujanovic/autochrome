@@ -21,7 +21,11 @@ THEME_COLORS = {
 }
 
 THEME_IMAGE = 'caution.png'
+THEME_IMAGE2 = 'refresh.png'
+THEME_IMAGE3 = 'tab.png'
 THEME_IMAGE_PATH = File.join(DATA_DIR,'theme_source',THEME_IMAGE)
+THEME_IMAGE_PATH2 = File.join(DATA_DIR,'theme_source',THEME_IMAGE2)
+THEME_IMAGE_PATH3 = File.join(DATA_DIR,'theme_source',THEME_IMAGE3)
 THEME_OUTPUT_PATH = File.join(DATA_DIR, 'themes')
 
 EXT_SOURCE_DIR = File.join(DATA_DIR, 'extension_source')
@@ -75,19 +79,46 @@ THEME_COLORS.each do |color_name,hue|
       "theme": {
         "images": {
           "theme_frame": "#{THEME_IMAGE}",
-          "theme_frame_inactive": "#{THEME_IMAGE}"
+          "theme_frame_inactive": "#{THEME_IMAGE}",
+          "theme_toolbar": "#{THEME_IMAGE2}",
+          "theme_ntp_background": "#{THEME_IMAGE2}",
+          "theme_tab_background": "#{THEME_IMAGE3}",
+          "theme_tab_background_incognito": "#{THEME_IMAGE3}"
         },
+        "colors": {
+          "frame": [32, 33, 36],
+          "frame_inactive": [60, 64, 67],
+          "frame_incognito": [32, 33, 36],
+          "frame_incognito_inactive": [60, 64, 67],
+          "toolbar": [50, 54, 57],
+          "tab_text": [241, 243, 244],
+          "tab_background_text": [189, 193, 198],
+          "tab_background_text_incognito": [189, 193, 198],
+          "tab_background_text_inactive": [168, 171, 175],
+          "tab_background_text_incognito_inactive": [168, 171, 175],
+          "bookmark_text": [241, 243, 244],
+          "ntp_background": [50, 54, 57],
+          "ntp_text": [255, 255, 255],
+          "omnibox_background": [32, 33, 36],
+          "omnibox_text": [255, 255, 255]
+		    },
         "tints": {
-          "background_tab": [-1.0, -1.0, 0.95],
           "frame":                    [hue, hue == 0 ? 0 : -1.0, -1.0],
           "frame_inactive":           [hue, hue == 0 ? 0 : -1.0, 0.7],
           "frame_incognito":          [hue, hue == 0 ? 0 : -1.0, -1.0],
-          "frame_incognito_inactive": [hue, hue == 0 ? 0 : -1.0, 0.7]
-        }
+          "frame_incognito_inactive": [hue, hue == 0 ? 0 : -1.0, 0.7],
+          "buttons": [-1, -1, 0.96]
+        },
+        "properties": {
+			    "ntp_logo_alternate": 1,
+			    "ntp_background_repeat": "repeat"
+		    }
       }
     }))
 
     FileUtils.cp(THEME_IMAGE_PATH, temp_dir)
+    FileUtils.cp(THEME_IMAGE_PATH2, temp_dir)
+    FileUtils.cp(THEME_IMAGE_PATH3, temp_dir)
     build_extension(options, temp_dir, "#{THEME_OUTPUT_PATH}/#{color_name}.crx")
   end
 end
